@@ -1,0 +1,46 @@
+body{
+  background-color: white;
+  min-height: 100vh;
+  overflow-x: hidden; 
+}
+
+
+header{
+  position: absolute;
+  width:100%; 
+  padding:30px 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 100;  
+}
+.logo {
+  font-size: 2em;
+  pointer-events: none;
+  color: #3927db;
+ margin-right: 270px;
+}
+nav a{
+    text-decoration: none;
+    color: #3927db;
+    border-radius: 20px;
+    padding: 6px 15px;
+    margin: 0 10px;
+    font-weight: 600;
+  }
+  nav a:hover,
+  nav a.active{
+    background-color: #3927db;
+    color: #fff;
+  }
+
+  
+    
+  
+  .parallax{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
