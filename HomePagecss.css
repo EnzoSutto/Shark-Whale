@@ -1,5 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+
 body{
-  background-color: white;
+  background-color: rgba(4,64,162,255);
   min-height: 100vh;
   overflow-x: hidden; 
 }
@@ -34,7 +44,9 @@ nav a{
     color: #fff;
   }
 
-  
+  .titanic {
+    bottom: 4000px;
+  }
     
   
   .parallax{
@@ -43,4 +55,148 @@ nav a{
     justify-content: center;
     align-items: center;
     
+}
+
+
+.parallax img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.degrade{
+  top: 1018px;
+  position: relative;
+  height: 400px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, rgba(8,11,18,255) 0%, #221691 35%,rgba(4,64,162,255)100%);
+  z-index: 1;
+}
+
+.sectionCuriosidade{
+  top: 1500px;
+position: relative;
+height: 500px;
+font-family: 'Times New Roman', Times, serif;
+z-index: 1;
+background-color: aliceblue;
+
+}
+.cardsCuriosidades{
+width: 100%;
+height: 600px;
+display:  flex;
+flex-direction: row;
+justify-content: space-evenly;
+align-items: center;
+
+}
+.Curiosidade1{
+  width: 300px;
+  height: 400px;
+  display: flex;
+  justify-content: start;
+  position: static;
+  left: 0px;
+  border: 2px solid #0b0331;
+  border-radius: 20px;
+  padding-top: 50px;
+  z-index: 1;
+
+}
+
+.Curiosidade2{
+  width: 300px;
+  height: 400px;
+  display: flex;
+  position: static;
+  justify-content: flex-start;
+  left: 500px;
+  border: 2px solid #0b0331;
+  border-radius: 20px;
+  padding-top: 50px;
+  z-index: 1;
+
+}
+.Curiosidade3{
+  width: 300px;
+  height: 400px;
+  display: flex;
+  justify-content: flex-end;
+  position: static;
+  left: 0px;
+  border: 2px solid #0b0331;
+  border-radius: 20px;
+  padding-top: 50px;
+  z-index: 1;
+
+}
+.Curiosidade4{
+  width: 300px;
+  height: 400px;
+  display: flex;
+ justify-content: end;
+ position: static;
+  left: 0px;
+  border: 2px solid #0b0331;
+  border-radius: 20px;
+  padding-top: 50px;
+  z-index: 1;
+
+}
+.Curiosidade1:not(:first-child) {
+  margin-left: -50px;
+}
+
+.Curiosidade1:hover {
+  transform: translateY(-20px);
+}
+
+.Curiosidade1:hover~.card {
+  left: 50px;
+}
+
+
+
+.Curiosidade2:not(:first-child) {
+  margin-left: -50px;
+}
+
+.Curiosidade2:hover {
+  transform: translateY(-20px);
+}
+
+.Curiosidade2:hover~.card {
+  left: 50px;
+}
+
+
+
+.Curiosidade3:not(:first-child) {
+  margin-left: -50px;
+}
+
+.Curiosidade3:hover {
+  transform: translateY(-20px);
+}
+
+.Curiosidade3:hover~.card {
+  left: 50px;
+}
+
+
+.Curiosidade4:not(:first-child) {
+  margin-left: -50px;
+}
+
+.Curiosidade4:hover {
+  transform: translateY(-20px);
+}
+
+.Curiosidade4:hover~.card {
+  left: 50px;
 }
