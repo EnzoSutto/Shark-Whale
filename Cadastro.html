@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Cadastro.css">
+    <title>SharkWhale</title>
+</head>
+<body class="fundo">
+    <section class="section_flex">
+        <div class="cards">
+          <h3>CRIE SUA CONTA</h3>
+          <br>
+          <span for="" style="position: relative; right: 184px;">Email</span>
+          <input class="Input" type="text" placeholder="Email@email.com" id="E_email">
+          <div id="mensagemErroEmail" class="invalido"></div>
+          <br>
+          <span for="" style="position: relative; right: 145px;">Nome Completo</span>
+          <input class="Input" type="text" placeholder="Nome Completo" id="N_nome">
+          <div id="mensagemErroNome" class="invalido"></div>
+          <br>
+          <span for="" style="position: relative; right: 180px;">Senha</span>
+          <input class="Input" type="password" placeholder="Senha" id="S_senha">
+          <div id="mensagemErroSenha" class="invalido"></div>
+          <br>
+          <span for="" style="position: relative; right: 143px;">Confirmar Senha</span>
+          <input class="Input" type="password" placeholder="Confirmar senha" id="CS_confirmarsenha">
+          <div id="mensagemErroSenha" class="invalido"></div>
+          <br>
+          <br>
+          <button onclick="Cadastrar()">
+            Criar conta</button>
+    
+          <p> Já tem conta?
+            <a href="Login.html"> Login</a>
+          </p>
+    
+        </div>
+      </section>
+</body>
+</html>
