@@ -1,5 +1,6 @@
 .fundo{
-    background-color: darkblue;
+  background-size: 50%;
+  align-items: center;
 }
 
 
@@ -19,18 +20,23 @@
     width: 535px;
     height: 515px;
     border-radius: 50px;
-    background: rgb(255, 255, 255);
-  
-  }
- 
-  .cards {
-    width: 535px;
-    height: 515px;
-    padding: 12px;
-    padding-top: 25px;
-    padding-bottom: 50px;
-    border-radius: 50px;
-    margin-top: 120px;
-    background: rgb(255, 255, 255);
-  
+  position: absolute;
+  padding: 12px;
+  padding-top: 25px;
+  padding-bottom: 50px;
+  margin-top: 120px;  
+}
+
+  .input{
+    height: 35px;
+    width: 390px;
+    border-radius: 5px;
+    border-style: solid;
+    margin-top: auto;
+    border: #548d3d solid 3px;
+        padding: 5px;
+    background-color: #A9C59D;
+    color: black;
+    font-size: medium;
+    outline:  0;
   }

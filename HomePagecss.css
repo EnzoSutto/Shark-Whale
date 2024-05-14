@@ -27,12 +27,12 @@ header{
 .logo {
   font-size: 2em;
   pointer-events: none;
-  color: #3927db;
+  color: #a99fff64;
  margin-right: 270px;
 }
 nav a{
     text-decoration: none;
-    color: #3927db;
+    color: #a99fff64;
     border-radius: 20px;
     padding: 6px 15px;
     margin: 0 10px;
@@ -40,13 +40,11 @@ nav a{
   }
   nav a:hover,
   nav a.active{
-    background-color: #3927db;
-    color: #fff;
+    background-color: #a99fff64;
+    color: #00ddff7b;
   }
 
-  .titanic {
-    bottom: 4000px;
-  }
+
     
   
   .parallax{
@@ -66,25 +64,25 @@ nav a{
   pointer-events: none;
 }
 
-.degrade{
-  top: 1018px;
+.faixa1 {
+  top: 900px;
   position: relative;
-  height: 400px;
-  color: black;
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(180deg, rgba(8,11,18,255) 0%, #221691 35%,rgba(4,64,162,255)100%);
+  height: 500px;
+  font-family: 'Times New Roman', Times, serif;
   z-index: 1;
+  background-color: #07112a;
+  background: rgb(7,17,42);
+background: linear-gradient(180deg, rgba(7,17,42,1) 50%, rgba(4,12,25,1) 60%);
 }
 
 .sectionCuriosidade{
-  top: 1500px;
+  top: 900px;
 position: relative;
 height: 500px;
 font-family: 'Times New Roman', Times, serif;
 z-index: 1;
-background-color: rgb(57, 62, 162);
-
+background-color: rgba(4,12,25,255);
+color: rgba(250, 235, 215, 0.715);
 }
 .cardsCuriosidades{
 width: 100%;
@@ -97,7 +95,7 @@ justify-content: space-between;
 
 
 .titulo{
-  color: #0b0331;
+  color: rgba(250, 235, 215, 0.632);
   display: flex;
 text-align: center;
 font-weight: bold;
@@ -219,4 +217,15 @@ align-items: first baseline;
 
 .Curiosidade4:hover~.card {
   left: 50px;
+}
+
+footer {
+background-color: rgba(4,12,25,255);
+width: 100%;
+height: 350px;
+padding: 40px;
+display: flex;
+top: 500;
+position: static;
+color: #cdcdc7;
 }
