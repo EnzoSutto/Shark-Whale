@@ -3,68 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Cadastro.css">
-    <title>SharkWhale</title>
+    <link rel="stylesheet" href="Login.css">
+    <title>login</title>
 </head>
-<body class="fundo" background="./IMG/Cadastro/fundocadastro.png">
+<body class=fundo background="./IMG/Cadastro/fundocadastro.png">
     <section class="section_flex">
         <div  class="cards"  >
-          <h3>CRIE SUA CONTA</h3>
+          <h3>Entre na sua conta </h3>
           <br>
           <span style="align-items: center; right: 184px;">Email</span>
           <input class="Input" type="text" placeholder="Email@email.com" id="E_email">
           <div id="mensagemErroEmail" class="invalido"></div>
           <br>
-          <span style="align-items: center; right: 145px;">Nome Completo</span>
-          <input class="Input" type="text" placeholder="Nome Completo" id="N_nome">
-          <div id="mensagemErroNome" class="invalido"></div>
-          <br>
           <span style="align-items: center; right: 180px;">Senha</span>
           <input class="Input" type="password" placeholder="Senha" id="S_senha">
           <div id="mensagemErroSenha" class="invalido"></div>
           <br>
-          <span style="align-items: center; right: 143px;">Confirmar Senha</span>
-          <input class="Input" type="password" placeholder="Confirmar senha" id="CS_confirmarsenha">
-          <div id="mensagemErroConfirmarSenha" class="invalido"></div>
-          <br>
           <div id="camposvazios" ></div>
-          <button onclick="Cadastrar()">
+          <button onclick="Logar()">
             Criar conta</button>
     
-          <p> Já tem conta?
-            <a href="Login.html"> Login</a>
+          <p> Não tem conta?
+            <a href="Cadastro.html"> Cadatre-se</a>
           </p>
           <div id="concluido"></div>
         </div>
         
       </section>
+
+
+
+
+
 </body>
 </html>
 <script>
 function Cadastrar(){
     const email = E_email.value;
-    const nome = N_nome.value;
     const senha = S_senha.value;
-    const confirmarsenha = CS_confirmarsenha.value;
+    
 
     camposvazios.innerHTML =""
     mensagemErroSenha.innerHTML=""
     concluido.innerHTML =""
 
-    if(email.length <= 0 || nome.length <= 0 || senha === "" || confirmarsenha === "") {
+    if(email.length <= 0 ||  senha.length <= 0 ) {
         camposvazios.innerHTML = "Preencha todos os campos necessários";
     }
-    else if(confirmarsenha !== senha) {
-      mensagemErroConfirmarSenha.innerHTML= "Suas senhas estão diferentes uma da outra";
-    }
+    
     else if(!/[!@#$%&*]/.test(senha) || senha.length < 8 || !/[A-Z]/.test(senha) || !/\d/.test(senha)) {
     mensagemErroSenha.innerHTML= "Senha deve conter no mínimo 8 caracteres incluindo número e caracteres especiais";
 }else {
-        concluido.innerHTML = "Cadastro concluído com sucesso";
-        window.location.href = ("login.html");
+        concluido.innerHTML = " Bem vindo ao mundo dos tubaroes Baleias";
+    
       }
     
 }
+
+
+</script>
 
 
 </script>
