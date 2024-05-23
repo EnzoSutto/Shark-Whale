@@ -4,41 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <title>login</title>
 </head>
-<body class=fundo background="./IMG/Cadastro/fundocadastro.png">
-    <section class="section_flex">
-        <div  class="cards"  >
-          <h3>Entre na sua conta </h3>
-          <br>
-          <span style="align-items: center; right: 184px;">Email</span>
-          <input class="Input" type="text" placeholder="Email@email.com" id="E_email">
-          <div id="mensagemErroEmail" class="invalido"></div>
-          <br>
-          <span style="align-items: center; right: 180px;">Senha</span>
-          <input class="Input" type="password" placeholder="Senha" id="S_senha">
-          <div id="mensagemErroSenha" class="invalido"></div>
-          <br>
-          <div id="camposvazios" ></div>
-          <button onclick="Logar()">
-            Criar conta</button>
-    
-          <p> Não tem conta?
-            <a href="Cadastro.html"> Cadatre-se</a>
-          </p>
-          <div id="concluido"></div>
-        </div>
-        
-      </section>
+<body>
 
+  <div class="display1">
 
+    <form action="">
+      <h1>Logar</h1>
+      <div class="inputs">
+        <input type="text" placeholder="Nome de usuario">
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="inputs">
+        <input type="password" placeholder="Senha">
+        <i class='bx bxs-lock-alt' ></i>
+      </div>
+      
 
-
-
+      <button onclick="Logar()" class="button">Logar</button>
+      <div class="naotemconta">
+        <p>Não tem conta? <a href="Cadastro.html">Cadastre-se</a> </p>
+      </div>
+    </div>
+  </form>
 </body>
 </html>
 <script>
-function Cadastrar(){
+function Logar(){
     const email = E_email.value;
     const senha = S_senha.value;
     

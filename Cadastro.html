@@ -4,40 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Cadastro.css">
-    <title>SharkWhale</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Cadastro</title>
 </head>
-<body class="fundo" background="./IMG/Cadastro/fundocadastro.png">
-    <section class="section_flex">
-        <div  class="cards"  >
-          <h3>CRIE SUA CONTA</h3>
-          <br>
-          <span style="align-items: center; right: 184px;">Email</span>
-          <input class="Input" type="text" placeholder="Email@email.com" id="E_email">
-          <div id="mensagemErroEmail" class="invalido"></div>
-          <br>
-          <span style="align-items: center; right: 145px;">Nome Completo</span>
-          <input class="Input" type="text" placeholder="Nome Completo" id="N_nome">
-          <div id="mensagemErroNome" class="invalido"></div>
-          <br>
-          <span style="align-items: center; right: 180px;">Senha</span>
-          <input class="Input" type="password" placeholder="Senha" id="S_senha">
-          <div id="mensagemErroSenha" class="invalido"></div>
-          <br>
-          <span style="align-items: center; right: 143px;">Confirmar Senha</span>
-          <input class="Input" type="password" placeholder="Confirmar senha" id="CS_confirmarsenha">
-          <div id="mensagemErroConfirmarSenha" class="invalido"></div>
-          <br>
-          <div id="camposvazios" ></div>
-          <button onclick="Cadastrar()">
-            Criar conta</button>
-    
-          <p> Já tem conta?
-            <a href="Login.html"> Login</a>
-          </p>
-          <div id="concluido"></div>
-        </div>
-        
-      </section>
+<body>
+
+  <div class="display1">
+
+    <section action="">
+      <h1>Cadastrar</h1>
+      <div class="inputs">
+        <input type="text" placeholder="Email@email.com" id="E_email">
+        <i class='bx bx-user'></i>
+      </div>
+      
+      <div class="inputs">
+        <input type="text" placeholder="Nome de usuario" id="N_nome">
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="inputs">
+        <input type="password" placeholder="Senha" id="S_senha">
+        <i class='bx bxs-lock-alt' ></i>
+      </div>
+      <span id="mensagemErroSenha"></span>
+        <div class="inputs">  
+          <input type="password" placeholder="confirmarsenha" id="CS_confirmarsenha">
+          <i class='bx bx-lock-alt' ></i>
+      </div>
+      <span id="mensagemErroConfirmarSenha"></span>
+      
+
+      <button onclick="Cadastrar()" class="button">Cadastrar</button>
+      <div class="temconta">
+        <p>Já tem conta? <a href="Login.html">Login</a> </p>
+      </div>
+      <span id="camposvazios"></span>
+      <span id="concluido"></span>
+    </div>
+  </section>
 </body>
 </html>
 <script>
@@ -47,11 +52,11 @@ function Cadastrar(){
     const senha = S_senha.value;
     const confirmarsenha = CS_confirmarsenha.value;
 
-    camposvazios.innerHTML =""
-    mensagemErroSenha.innerHTML=""
-    concluido.innerHTML =""
-
-    if(email.length <= 0 || nome.length <= 0 || senha === "" || confirmarsenha === "") {
+    camposvazios.innerHTML ="";
+    mensagemErroSenha.innerHTML="";
+    concluido.innerHTML ="";
+    mensagemErroConfirmarSenha.innerHTML ="";
+    if(email.length <= 0 || nome.length <= 0 || senha == "" || confirmarsenha == "") {
         camposvazios.innerHTML = "Preencha todos os campos necessários";
     }
     else if(confirmarsenha !== senha) {
