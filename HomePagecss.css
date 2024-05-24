@@ -223,163 +223,138 @@ align-items: first baseline;
 
 
 footer {
-  background-color: rgb(19, 50, 163);
-  color: black;
-  width: 100%;
-  height: 350px;
-  padding: 40px;
-  display: flex;
-  top: 854px;
   position: relative;
-}
-
-footer p{
-  width: 375px; 
-}
-
-/* Detalhes da parte esquerda do Footer */
-.column1 {
-  margin-left: 10px;
-  width: 440px;
-  border-right: solid;
-}
-
-.column1 h2{
+  width: 100%;
+  background: #3586ff ;
+  min-height: 100px;
+  padding: 20px 50px;
+  top: 853px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  font-size: 27px;
-}
-
-.column1 img{
-  border-radius: 100%;
-  margin-right: 3px;
-  height: 50px;
-  width: 50px;
-}
-
-/* Detalhes da parte central do Footer */
-.column2{
-  width: 302px;
-  border-right: solid;
-  margin-left: 20px;
   flex-direction: column;
-  display: flex;
 }
 
-.column2 h2{
-  margin-left: 20px;
+footer .icons1, 
+footer .menu {
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 10px 0;
+flex-wrap: wrap;
+z-index: 3;
+
 }
 
-.column2 a{
-  margin-left: 20px;
-  text-decoration:none;
-  color: black;
-  margin-bottom: 5px;
+footer .icons1 li,
+footer .menu  li{
+  list-style: none;
+}
+footer .icons1 li a
+{
+  font-size: 2em;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
 }
 
-/* Detalhes da parte direita do Footer */
-.column3{
-  margin-left: 10px;
-  width: 440px;
-  display: flex;
-}
-
-.column3 h2{
-  margin-left: 10px;
-}
-
-.column3 p{
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
-  width: 330px;
-}
-
-.column3 a{
-  text-decoration:none;
-  margin-left: 10px;
-  color: black;
-}
-
-/* Mapa do Endereço */
-iframe{
-  border-radius: 20px;
-  margin: 10px;
+footer .icons1 li a:hover
+{
+   transform: translateY(-10px);
 }
 
 
-/* Tamanho dos ícones (facebook, instagram, twitter, linkedin) */
-.logos .icone1{
-  filter:invert();
-  height: 34px;
-  width: 34px;
+footer .menu  li a 
+{
+  font-size: 1.2em;
+  color: #fff;
+  margin: 0 10px;
+  display: inline-block;
+  text-decoration: none;
+  opacity: 0.75;
 }
-.logos .icone2{
-  filter:invert();
-  height: 32px;
-  width: 32px;
+footer .menu  li a:hover
+{
+  opacity: 1;
 }
-.logos .icone3{
-  filter:invert();
-  height: 33px;
-  width: 32px;
-}   
-.logos .icone4{
-  filter:invert();
-  height: 32px;
-  width: 32px;
-}
-
-/* Ícones localização, telefone e email */
-.icone5{
-  filter:invert();
-  height: 29px;
-  width: 29px;
-}
-.icone6{
-  filter:invert();
-  height: 29px;
-  width: 29px;
-}
-.icone7{
-  filter:invert();
-  height: 32px;
-  width: 32px;
+footer p 
+{
+  color: #fff;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 1.1em;
 }
 
-/* Animação dos ícones Footer*/
-.logos .icone1:hover {
-  transform: translateY(-5px);
-  transition: all 0.4s;
+footer .onda
+{
+position: absolute;
+top: -100px;
+left: 0;
+width: 100%;
+height: 100px;
+background: url(./IMG/HOMEPAGE/wave.png);
+background-size: 1000px  100px;
+z-index: 3;
 }
-.logos .icone2:hover {
-  transform: translateY(-5px);
-  transition: all 0.4s;
-}
-.logos .icone3:hover {
-  transform: translateY(-5px);
-  transition: all 0.4s;
-}
-.logos .icone4:hover {
-  transform: translateY(-5px);
-  transition: all 0.4s;
-} 
-.logos2 .icone5:hover {
-  transform: translateY(-5px);
-  transition: all 0.4s;
-} 
-.logos2 .icone6:hover {
-  transform: translateY(-5px);
-  transition: all 0.4s;
-} 
-.logos2 .icone7:hover {
-  transform: translateY(-5px);
-  transition: all 0.4s;
-} 
 
-/* Animação do menu */
-.column2 a:hover{
-  transform: translateX(5px);
-  transition: all 0.4s;
-  
+
+footer .onda#onda1
+{
+  z-index: 1000;
+  opacity: 1;
+  bottom: 0;
+  animation: animatewave 4s linear infinite;
+}
+
+footer .onda#onda2
+{
+  z-index: 999;
+  opacity: 0.5;
+  bottom: 10;
+  animation: animatewave2 4s linear infinite;
+}
+
+footer .onda#onda3
+{
+  z-index: 1000;
+  opacity: 0.2;
+  bottom: 15;
+  animation: animatewave 3s linear infinite;
+}
+
+footer .onda#onda4
+{
+  z-index: 999;
+  opacity: 0.7;
+  bottom: 20;
+  animation: animatewave2 3s linear infinite;
+}
+
+@keyframes animatewave 
+{
+  0%
+  {
+    background-position-x: 1000px;
+  }
+  100%
+  {
+    background-position-x: 0px;
+  }
+}
+
+
+
+@keyframes animatewave2 
+{
+  0%
+  {
+    background-position-x: 0px;
+  }
+  100%
+  {
+    background-position-x: 1000px;
+  }
 }
