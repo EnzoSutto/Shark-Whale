@@ -8,76 +8,108 @@
 }
 
 
-body{
-  background-color: rgba(4,64,162,255);
-  min-height: 100vh;
-  overflow-x: hidden; 
+body {
+  background: url("./IMG/HOMEPAGE/projeto_big.png") no-repeat center;
+  overflow-x: hidden;
+  background-size: contain;
+  background-color: rgb(83, 85, 121);
+  padding-top: 100px;
+  position: relative;
 }
+
 
 
 header{
-  position: absolute;
-  width:100%; 
-  padding:30px 100px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  z-index: 100;  
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+padding: 0.1rem 5%;
+background: rgba(0, 151, 252, 0.1);  
+backdrop-filter: blur(50px);
+display: flex;
+justify-content: space-between;
+align-items: center;
+z-index: 100;
 }
-.logo {
-  font-size: 2em;
-  pointer-events: none;
-  color: #a99fff64;
- margin-right: 270px;
-}
-nav a{
-    text-decoration: none;
-    color: #a99fff64;
-    border-radius: 20px;
-    padding: 6px 15px;
-    margin: 0 10px;
-    font-weight: 600;
-  }
-  nav a:hover,
-  nav a.active{
-    background-color: #a99fff64;
-    color: #00ddff7b;
-  }
-
-
-    
-  
-  .parallax{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-
-
-.parallax img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-
-  pointer-events: none;
-}
-
-.faixa1 {
-  top: 854px;
+header img{
+  left: -40px;
+  width: 70px;
+  height: 70px;
   position: relative;
-  height: 500px;
-  font-family: 'Times New Roman', Times, serif;
-  z-index: 1;
-  background-color: #07112a;
-  background: rgb(7,17,42);
-background: linear-gradient(180deg, rgba(8,35,62,255) 50%, rgba(4,12,25,1) 60%);
+}
+
+  .header::after {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(0, 65, 139, 0.158),transparent );
+transition: .5s;
+  }
+  .header:hover::after{
+    left: 100%;
+  }
+
+
+
+.navbar a {
+  font-size: 1.15rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 2.5rem;
+}
+
+    
+.section_shark {
+  position: relative;
+  display: flex;
+  justify-content: flex-start; 
+  align-items: center;
+  padding: 0 20px;
+  top: 300px;
+  width: 100%; 
+}
+
+.section_shark .content {
+  color: #100227;
+  max-width: 1200px;
+  width: 100%;
+  text-align: left; 
+}
+
+.section_shark .content h1 {
+  font-size: 3rem;
+  max-width: 600px;
+}
+
+.section_shark .content p {
+  font-weight: 300;
+  margin-top: 15px;
+  max-width: 600px;
+}
+
+.section_shark .content button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #007BFF; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.section_shark .content button:hover {
+  background-color: #0056b3; 
 }
 
 .sectionCuriosidade{
-  top: 853px;
+  top: 623px;
 position: relative;
 height: 500px;
 font-family: 'Times New Roman', Times, serif;
@@ -228,7 +260,7 @@ footer {
   background: #3586ff ;
   min-height: 100px;
   padding: 20px 50px;
-  top: 853px;
+  top: 623px;
   display: flex;
   justify-content: center;
   align-items: center;
