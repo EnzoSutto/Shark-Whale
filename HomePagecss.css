@@ -117,142 +117,116 @@ z-index: 1;
 background-color: rgba(4,12,25,255);
 color: rgba(250, 235, 215, 0.715);
 }
-.cardsCuriosidades{
-width: 100%;
-height: 600px;
-display:  flex;
-flex-direction: row;
-justify-content: space-between;
-
-}
 
 
-.titulo{
-  color: rgba(250, 235, 215, 0.632);
+.wrapper 
+{
+  width: 100%;
   display: flex;
-text-align: center;
-font-weight: bold;
-  font-size: 30px;
-  bottom: 40px;
+  align-items: center;
+  justify-content: center;
+ top: 100px;
   position: relative;
 }
 
-.texto{
-  align-self: center;
-  position: absolute;
-}
-
-.Curiosidade1{
-  top: 193px;
-  width: 300px;
+.conteiner
+{
   height: 400px;
   display: flex;
-  justify-content: start;
-  position: static;
-      left: 0px;
-  border: 2px solid #0b0331;
-  border-radius: 20px;
-  padding-top: 50px;
-  z-index: 1;
-align-items: first baseline;
+   flex-wrap:   nowrap;
+   justify-content: start;
 }
 
-.Curiosidade1:not(:first-child) {
-  margin-left: -50px;
+.card 
+{
+  bottom: 100px;
+  position: relative;
+width: 80px;
+border-radius: .75rem;
+background-size: cover;
+cursor: pointer;
+overflow: hidden;
+border-radius: 2rem;
+margin: 0 10px;
+display: flex;
+align-items: flex-end;
+transition: .6s cubic-bezier(.28, -0.03,0,.99);
+box-shadow:  0px 10px 30px  -5px rgba(0, 0, 0, 0.8);
+
 }
 
-.Curiosidade1:hover {
-  transform: translateY(-20px);
-}
-
-.Curiosidade1:hover~.card {
-  left: 50px;
-}
-
-
-.Curiosidade2{
-  top: 193px;
-  width: 300px;
-  height: 400px;
+.card > .row 
+{
+  color: #fff;
   display: flex;
-  position: static;
-    justify-content: flex-start;
-  border: 2px solid #0b0331;
-  border-radius: 20px;
-  padding-top: 50px;
-  z-index: 1;
+  flex-wrap: nowrap;
 }
 
-.Curiosidade2:not(:first-child) {
-  margin-left: -50px;
+.card > .row > .icons2
+{
+  background: #233;
+  color: #fff;
+  border-radius: 50%;
+  width: 50px;
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
 }
 
-.Curiosidade2:hover {
-  transform: translateY(-20px);
+.card > .row > .descricao
+{
+display: flex;
+justify-content: center;
+flex-direction: column;
+overflow: hidden;
+height: 80px;
+width: 520px;
+opacity: 0;
+transform: translateY(30px);
+transition-delay: .3s;
+transition:  all .3s ease;
 }
 
-.Curiosidade2:hover~.card {
-  left: 50px;
+.descricao p {
+  color: #b0b0ba;
+  padding-top: 5px;
+}
+.descricao h4 
+{
+   text-decoration: uppercase;
+}
+.descricao a 
+{
+  color: #fff;
 }
 
-
-.Curiosidade3{
-  top: 193px;
-  width: 300px;
-  height: 400px;
-  display: flex;
-  justify-content: flex-end;
-  position: static;
-    left: 0px;
-  border: 2px solid #0b0331;
-  border-radius: 20px;
-  padding-top: 50px;
-  z-index: 1;
-  
+input {
+  display: none;
 }
 
-
-.Curiosidade3:not(:first-child) {
-  margin-left: -50px;
+input:checked + label
+{
+  width: 600px;
 }
 
-.Curiosidade3:hover {
-  transform: translateY(-20px);
+input:checked + label .descricao
+{
+   opacity: 1 !important;
+    transform:  translateY(0) !important;
 }
-
-.Curiosidade3:hover~.card {
-  left: 50px;
+.card[for="c1"] {
+   background-image: url("./IMG/HOMEPAGE/alimetacao.png");
 }
-
-.Curiosidade4{
-  top: 193px;
-  width: 300px;
-  height: 400px;
-  display: flex;
- justify-content: end;
- position: sticky;
-   left: 0px;
-  border: 2px solid #0b0331;
-  border-radius: 20px;
-  padding-top: 50px;
-  z-index: 1;
-
+.card[for="c2"] {
+  background-image: url("./IMG/HOMEPAGE/regioes.png");
 }
-
-
-.Curiosidade4:not(:first-child) {
-  margin-left: -50px;
+.card[for="c3"] {
+  background-image: url("./IMG/HOMEPAGE/biologia.png");
 }
-
-.Curiosidade4:hover {
-  transform: translateY(-20px);
+.card[for="c4"] {
+  background-image: url("./IMG/HOMEPAGE/amizade.png");
 }
-
-.Curiosidade4:hover~.card {
-  left: 50px;
-}
-
-
 
 footer {
   position: relative;
