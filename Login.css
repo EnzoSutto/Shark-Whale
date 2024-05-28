@@ -26,16 +26,23 @@ header{
   top: 0;
   left: 0;
   width: 100%;
- padding: 1.3rem 10%;
- background: rgba(0, 0, 0, .1);  
+ padding: 0.1rem 5%;
+ background: rgba(0, 151, 252, 0.1);  
  backdrop-filter: blur(50px);
  display: flex;
  justify-content: space-between;
  align-items: center;
  z-index: 100;
  }
- 
-   .header::after {
+
+ header img{
+  left: -40px;
+  width: 70px;
+  height: 70px;
+  position: relative;
+}
+
+.header::after {
  content: '';
  position: absolute;
  top: 0;
@@ -64,6 +71,8 @@ header{
    margin-left: 2.5rem;
  }
 .display1{
+  top: 70px;
+  position: relative;
 width: 420px;
 background-color: transparent;
 border: 2px solid rgba(255, 255, 255, .2);
