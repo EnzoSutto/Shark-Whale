@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/Quiz.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <main class="main">
+        <header class="header">
+            <a href="index.html" class="logo"><img src="./IMG/HOMEPAGE/AtreusLogo.png"></a>
+      
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="Login.html">Login</a>
+                <a href="Cadastro.html">Cadastro</a>
+                <a href="SobreMin.html">Sobre min</a>
+            </nav>
+        </header>
+
+        <section class="home">
+            <div class="home-content">
+                <h1>Curiosidades do Gigante do Mar</h1>
+                <p>Lorem, ipsum.adahudhjadyaudfgadcfatgyhfcaitydfg</p>
+                     <button onclick="AparecerModal()" id="ligar" class="button">Iniciar Quiz</button>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="modal1">
+        <h2>Regras do Quiz</h2>
+        <span class="regra">1. Sem Consultas Externas</span>    
+        <span class="regra">2. Uma Resposta por Pergunta</span>    
+        <span class="regra">3. Apenas uma pessoa joga</span>    
+        <span class="regra">4. Você poderá receber um resumo de seu desempenho</span>    
+        <span class="regra">5. Se Divirta</span>    
+        
+        <div class="button2">
+            <button onclick="TirarModal()" class="btn-sair">Sair do quiz</button>
+            <a href="#" class="info-btn">Continuar</a>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<script>
+     function AparecerModal() {
+       
+            const modal = document.querySelector('.modal1');
+            modal.classList.add('active');
+        }
+    function TirarModal()
+    {
+        const modal = document.querySelector('.modal1');
+        modal.classList.remove('active')
+        }
+    
+</script>

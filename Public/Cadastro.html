@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/Cadastro.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="./IMG/HOMEPAGE/AtreusLogo.png" type="image/x-icon">
+    <title>Cadastro</title>
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="logo"><img src="./IMG/HOMEPAGE/AtreusLogo.png"></a>
+    
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="Login.html">Login</a>
+        <a href="SobreMin.html">Sobre min</a>
+    </nav>
+</header>
+
+  <div class="display1">
+
+    <section action="">
+      <h1>Cadastrar</h1>
+      <div class="inputs">
+        <input type="text" placeholder="Email@email.com" id="E_email">
+        <i class='bx bx-user'></i>
+      </div>
+      
+      <div class="inputs">
+        <input type="text" placeholder="Nome de usuario" id="N_nome">
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="inputs">
+        <input type="password" placeholder="Senha" id="S_senha">
+        <i class='bx bxs-lock-alt' ></i>
+      </div>
+      <span id="mensagemErroSenha"></span>
+        <div class="inputs">  
+          <input type="password" placeholder="confirmarsenha" id="CS_confirmarsenha">
+          <i class='bx bx-lock-alt' ></i>
+      </div>
+      <span id="mensagemErroConfirmarSenha"></span>
+      
+
+      <button onclick="Cadastrar()" class="button">Cadastrar</button>
+      <div class="temconta">
+        <p>Já tem conta? <a href="Login.html">Login</a> </p>
+      </div>
+      <span id="camposvazios"></span>
+      <span id="concluido"></span>
+    </div>
+  </section>
+</body>
+</html>
+<script>
+function Cadastrar(){
+    const email = E_email.value;
+    const nome = N_nome.value;
+    const senha = S_senha.value;
+    const confirmarsenha = CS_confirmarsenha.value;
+
+    camposvazios.innerHTML ="";
+    mensagemErroSenha.innerHTML="";
+    concluido.innerHTML ="";
+    mensagemErroConfirmarSenha.innerHTML ="";
+    if(email.length <= 0 || nome.length <= 0 || senha == "" || confirmarsenha == "") {
+        camposvazios.innerHTML = "Preencha todos os campos necessários";
+    }
+    else if(confirmarsenha !== senha) {
+      mensagemErroConfirmarSenha.innerHTML= "Suas senhas estão diferentes uma da outra";
+    }
+    else if(!/[!@#$%&*]/.test(senha) || senha.length < 8 || !/[A-Z]/.test(senha) || !/\d/.test(senha)) {
+    mensagemErroSenha.innerHTML= "Senha deve conter no mínimo 8 caracteres incluindo número e caracteres especiais";
+}else {
+        concluido.innerHTML = "Cadastro concluído com sucesso";
+        window.location.href = ("login.html");
+      }
+    
+}
+
+
+</script>
