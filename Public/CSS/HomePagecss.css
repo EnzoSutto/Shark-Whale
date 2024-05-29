@@ -78,6 +78,8 @@ transition: .5s;
   max-width: 1200px;
   width: 100%;
   text-align: left; 
+  left: 50px;
+  position: relative;
 }
 
 .section_shark .content h1 {
