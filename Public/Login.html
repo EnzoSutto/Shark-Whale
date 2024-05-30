@@ -21,51 +21,110 @@
 
   <div class="display1">
 
-    <form action="">
+    <section>
       <h1>Logar</h1>
       <div class="inputs">
-        <input type="text" placeholder="Nome de usuario">
+        <input type="text" placeholder="Email" id="E_email">
         <i class='bx bxs-user'></i>
       </div>
       <div class="inputs">
-        <input type="password" placeholder="Senha">
+        <input type="password" placeholder="Senha" id="S_senha">
         <i class='bx bxs-lock-alt' ></i>
       </div>
-      
-
-      <button onclick="Logar()" class="button">Logar</button>
+    
+    <button onclick="Logar()" class="button">Logar</button>
       <div class="naotemconta">
-        <p>Não tem conta? <a href="Cadastro.html">Cadastre-se</a> </p>
+        <p>Não tem conta? <a href="Cadastro.html">Cadastre-se</a> </p> 
+         <spam id="mensagemErroSenha"></spam>
+     <spam id="camposvazios"></spam> 
+     <spam id="mensagem_concluido"></spam>
       </div>
     </div>
-  </form>
+  </section>
 </body>
 </html>
 <script>
+  const caracterEspecial = /[!@#$%&*]/;
+
 function Logar(){
-    const email = E_email.value;
-    const senha = S_senha.value;
-    
+  const emailVar = E_email.value;
+  const senhaVar = S_senha.value;
+  const temCaractereEspecial = caracterEspecial.test(senhaVar);
+  const temLetraMaiuscula = /[A-Z]/.test(senhaVar);
+  const temDigito = /\d/.test(senhaVar);
+  const temTamanhoMinimo = senhaVar.length >= 8;
 
-    camposvazios.innerHTML =""
-    mensagemErroSenha.innerHTML=""
-    concluido.innerHTML =""
 
-    if(email.length <= 0 ||  senha.length <= 0 ) {
-        camposvazios.innerHTML = "Preencha todos os campos necessários";
-    }
+  if (!emailVar  || !senhaVar ) {
+    camposvazios.innerHTML = "Preencha todos os campos necessários";
+  } 
+ else if (!temCaractereEspecial || !temTamanhoMinimo || !temLetraMaiuscula || !temDigito) {
+    mensagemErroSenha.innerHTML = "Senha deve conter no mínimo 8 caracteres, incluindo número e caracteres especiais";
+  } else {
+
+fetch("/usuarios/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar
+      })
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
     
-    else if(!/[!@#$%&*]/.test(senha) || senha.length < 8 || !/[A-Z]/.test(senha) || !/\d/.test(senha)) {
-    mensagemErroSenha.innerHTML= "Senha deve conter no mínimo 8 caracteres incluindo número e caracteres especiais";
-}else {
-        concluido.innerHTML = " Bem vindo ao mundo dos tubaroes Baleias";
-    
+      if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+          sessionStorage.EMAIL_USUARIO = json.email;
+          sessionStorage.NOME_USUARIO = json.nome;
+          sessionStorage.ID_USUARIO = json.id;
+          mensagem_concluido.innerHTML = "Login realizado com sucesso..."
+          setTimeout(function () {
+            window.location = "index.html";
+
+          }, 3000); // apenas para exibir o loading
+        
+        });
+        
+      } else {
+
+        console.log("Houve um erro ao tentar realizar o login!");
+
+        resposta.text().then(texto => {
+          console.error(texto);
+         
+        });
       }
+
+    }).catch(function (erro) {
+      console.log(erro);
     
+    })
+
+  
+  
+
+  function finalizarAguardar(texto) {
+    var erroLogin = document.getElementById("mensagemGeral");
+    divAguardar.style.display = "none";
+
+    
+    if (texto) {
+        divErrosLogin.style.display = "flex";
+        divErrosLogin.innerHTML = texto;
+    }
 }
 
 
-</script>
 
+
+  
+}
+}
 
 </script>

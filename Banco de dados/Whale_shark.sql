@@ -1,12 +1,13 @@
+
 create database Whale_Shark;
 
 use Whale_Shark;
 
 create table usuario(
 idUsuario int not null auto_increment,
+nome varchar(45) not null,
 email varchar(45) not null,
-Nome varchar(45) not null,
-Senha varchar(50) not null,
+senha varchar(50) not null,
 primary key (idUsuario)
 );
 
@@ -28,4 +29,6 @@ pontuaçaoinal varchar(45) not null,
 primary key(idTentativa),
 constraint fkuser foreign key (fkuser) references usuario(idUsuario)
 );
-drop table resultado;
+
+
+select * from usuario;
