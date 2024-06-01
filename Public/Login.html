@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./CSS/Login.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="shortcut icon" href="./IMG/HOMEPAGE/AtreusLogo.png" type="image/x-icon">
-    <title>login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./CSS/Login.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="shortcut icon" href="./IMG/HOMEPAGE/AtreusLogo.png" type="image/x-icon">
+  <title>login</title>
 </head>
+
 <body>
   <header class="header">
     <a href="index.html" class="logo"><img src="./IMG/HOMEPAGE/AtreusLogo.png"></a>
 
     <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="Cadastro.html">Cadastro</a>
-        <a href="SobreMin.html">Sobre min</a>
+      <a href="index.html">Home</a>
+      <a href="Cadastro.html">Cadastro</a>
+      <a href="SobreMin.html">Sobre min</a>
     </nav>
-</header>
+  </header>
 
   <div class="display1">
 
@@ -29,102 +31,103 @@
       </div>
       <div class="inputs">
         <input type="password" placeholder="Senha" id="S_senha">
-        <i class='bx bxs-lock-alt' ></i>
+        <i class='bx bxs-lock-alt'></i>
       </div>
-    
-    <button onclick="Logar()" class="button">Logar</button>
+
+      <button onclick="Logar()" class="button">Logar</button>
       <div class="naotemconta">
-        <p>Não tem conta? <a href="Cadastro.html">Cadastre-se</a> </p> 
-         <spam id="mensagemErroSenha"></spam>
-     <spam id="camposvazios"></spam> 
-     <spam id="mensagem_concluido"></spam>
+        <p>Não tem conta? <a href="Cadastro.html">Cadastre-se</a> </p>
+        <spam id="mensagemErroSenha"></spam>
+        <spam id="camposvazios"></spam>
+        <spam id="mensagem_concluido"></spam>
       </div>
-    </div>
+  </div>
   </section>
 </body>
+
 </html>
 <script>
   const caracterEspecial = /[!@#$%&*]/;
 
-function Logar(){
-  const emailVar = E_email.value;
-  const senhaVar = S_senha.value;
-  const temCaractereEspecial = caracterEspecial.test(senhaVar);
-  const temLetraMaiuscula = /[A-Z]/.test(senhaVar);
-  const temDigito = /\d/.test(senhaVar);
-  const temTamanhoMinimo = senhaVar.length >= 8;
+  function Logar() {
+    const emailVar = E_email.value;
+    const senhaVar = S_senha.value;
+    const temCaractereEspecial = caracterEspecial.test(senhaVar);
+    const temLetraMaiuscula = /[A-Z]/.test(senhaVar);
+    const temDigito = /\d/.test(senhaVar);
+    const temTamanhoMinimo = senhaVar.length >= 8;
 
 
-  if (!emailVar  || !senhaVar ) {
-    camposvazios.innerHTML = "Preencha todos os campos necessários";
-  } 
- else if (!temCaractereEspecial || !temTamanhoMinimo || !temLetraMaiuscula || !temDigito) {
-    mensagemErroSenha.innerHTML = "Senha deve conter no mínimo 8 caracteres, incluindo número e caracteres especiais";
-  } else {
+    if (!emailVar || !senhaVar) {
+      camposvazios.innerHTML = "Preencha todos os campos necessários";
+    }
+    else if (!temCaractereEspecial || !temTamanhoMinimo || !temLetraMaiuscula || !temDigito) {
+      mensagemErroSenha.innerHTML = "Senha deve conter no mínimo 8 caracteres, incluindo número e caracteres especiais";
+    } else {
 
-fetch("/usuarios/autenticar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        emailServer: emailVar,
-        senhaServer: senhaVar
+      fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          emailServer: emailVar,
+          senhaServer: senhaVar
+        })
+      }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+          console.log(resposta);
+
+          resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+            sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.NOME_USUARIO = json.nome;
+            sessionStorage.ID_USUARIO = json.id;
+            mensagem_concluido.innerHTML = "Login realizado com sucesso..."
+            setTimeout(function () {
+              window.location = "index.html";
+
+            }, 3000); // apenas para exibir o loading
+
+          });
+
+        } else {
+
+          console.log("Houve um erro ao tentar realizar o login!");
+
+          resposta.text().then(texto => {
+            console.error(texto);
+
+          });
+        }
+
+      }).catch(function (erro) {
+        console.log(erro);
+
       })
-    }).then(function (resposta) {
-      console.log("ESTOU NO THEN DO entrar()!")
-    
-      if (resposta.ok) {
-        console.log(resposta);
 
-        resposta.json().then(json => {
-          console.log(json);
-          console.log(JSON.stringify(json));
-          sessionStorage.EMAIL_USUARIO = json.email;
-          sessionStorage.NOME_USUARIO = json.nome;
-          sessionStorage.ID_USUARIO = json.id;
-          mensagem_concluido.innerHTML = "Login realizado com sucesso..."
-          setTimeout(function () {
-            window.location = "index.html";
 
-          }, 3000); // apenas para exibir o loading
-        
-        });
-        
-      } else {
 
-        console.log("Houve um erro ao tentar realizar o login!");
 
-        resposta.text().then(texto => {
-          console.error(texto);
-         
-        });
+      function finalizarAguardar(texto) {
+        var erroLogin = document.getElementById("mensagemGeral");
+        divAguardar.style.display = "none";
+
+
+        if (texto) {
+          divErrosLogin.style.display = "flex";
+          divErrosLogin.innerHTML = texto;
+        }
       }
 
-    }).catch(function (erro) {
-      console.log(erro);
-    
-    })
 
-  
-  
 
-  function finalizarAguardar(texto) {
-    var erroLogin = document.getElementById("mensagemGeral");
-    divAguardar.style.display = "none";
 
-    
-    if (texto) {
-        divErrosLogin.style.display = "flex";
-        divErrosLogin.innerHTML = texto;
+
     }
-}
-
-
-
-
-  
-}
-}
+  }
 
 </script>

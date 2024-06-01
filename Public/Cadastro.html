@@ -90,26 +90,26 @@
           senhaServer: senhaVar,
         }),
       })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
 
-        if (resposta.ok) {
-          resposta.json().then(json => {
-            mostrarCadastroFinalizado();
-            concluido.innerHTML = "Cadastro realizado com sucesso...";
-          });
-          limparFormulario();
-        } else {
-          resposta.text().then(texto => {
-            console.error(texto);
-            mensagemErroSenha.innerHTML = "Houve um erro ao tentar realizar o cadastro!";
-          });
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        mensagemErroSenha.innerHTML = "Houve um erro ao tentar realizar o cadastro!";
-      });
+          if (resposta.ok) {
+            resposta.json().then(json => {
+              mostrarCadastroFinalizado();
+              concluido.innerHTML = "Cadastro realizado com sucesso...";
+            });
+            limparFormulario();
+          } else {
+            resposta.text().then(texto => {
+              console.error(texto);
+              mensagemErroSenha.innerHTML = "Houve um erro ao tentar realizar o cadastro!";
+            });
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+          mensagemErroSenha.innerHTML = "Houve um erro ao tentar realizar o cadastro!";
+        });
     }
   }
 
@@ -121,6 +121,6 @@
   }
 
   function mostrarCadastroFinalizado() {
-    window.location.href =("Login.html");
+    window.location.href = ("Login.html");
   }
 </script>

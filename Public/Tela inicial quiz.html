@@ -7,11 +7,9 @@
     <title>Tela inicial</title>
 </head>
 <body>
-    
     <main class="main">
         <header class="header">
             <a href="index.html" class="logo"><img src="./IMG/HOMEPAGE/AtreusLogo.png"></a>
-      
             <nav class="navbar">
                 <a href="index.html">Home</a>
                 <a href="Login.html">Login</a>
@@ -19,44 +17,159 @@
                 <a href="SobreMin.html">Sobre min</a>
             </nav>
         </header>
-
-        <section class="home">
-            <div class="home-content">
-                <h1>Curiosidades do Gigante do Mar</h1>
-                <p>Lorem, ipsum.adahudhjadyaudfgadcfatgyhfcaitydfg</p>
-                     <button onclick="AparecerModal()" id="ligar" class="button">Iniciar Quiz</button>
-            </div>
-        </section>
-
+        <div class="container"> 
+            <section class="quiz">
+                <div class="quiz-box">
+                    <h1>Whale-Shark Quiz</h1>
+                    <div class="quiz-header">
+                        <span>Quiz sobre o Tubarão-Baleia</span>
+                    </div>
+                    <h2 class="texto-questao"></h2>
+                    <div class="opcoes-lista"></div>
+                    <div class="quiz-footer">
+                        <span class="questao-atual">1 de 10 Questões</span>
+                        <button onclick="proximaquestao()" class="proxima-btn">Próxima</button>
+                    </div>
+                </div>
+            </section>
+            <section class="home">
+                <div class="home-content">
+                    <h1>Curiosidades do Gigante do Mar</h1>
+                    <p>Lorem, ipsum.adahudhjadyaudfgadcfatgyhfcaitydfg</p>
+                    <button onclick="AparecerModal()" id="ligar" class="button">Iniciar Quiz</button>
+                </div>
+            </section>
+        </div>
     </main>
-
     <div class="modal1">
         <h2>Regras do Quiz</h2>
-        <span class="regra">1. Sem Consultas Externas</span>    
-        <span class="regra">2. Uma Resposta por Pergunta</span>    
-        <span class="regra">3. Apenas uma pessoa joga</span>    
-        <span class="regra">4. Você poderá receber um resumo de seu desempenho</span>    
-        <span class="regra">5. Se Divirta</span>    
-        
+        <span class="regra">1. Sem Consultas Externas</span>
+        <span class="regra">2. Uma Resposta por Pergunta</span>
+        <span class="regra">3. Apenas uma pessoa joga</span>
+        <span class="regra">4. Você poderá receber um resumo de seu desempenho</span>
+        <span class="regra">5. Se Divirta</span>
         <div class="button2">
             <button onclick="TirarModal()" class="btn-sair">Sair do quiz</button>
-            <a href="#" class="info-btn">Continuar</a>
+            <a href="#" onclick="IrParaQuiz()" class="info-btn">Continuar</a>
         </div>
     </div>
-    
+    <script src="./JS/Quiz/questions.js"></script>
+    <script>
+        const modal = document.querySelector('.modal1');
+        const blur = document.querySelector('.main');
+        const Quiz = document.querySelector('.quiz');
+        const QuizBox = document.querySelector('.quiz-box');
+
+        function AparecerModal() {
+            modal.classList.add('active');
+            blur.classList.add('active');
+        }
+
+        function TirarModal() {
+            modal.classList.remove('active');
+            blur.classList.remove('active');
+        }
+
+        function IrParaQuiz() {
+            Quiz.classList.add('active');
+            modal.classList.remove('active');
+            blur.classList.remove('active');
+            QuizBox.classList.add('active');
+            verquestao(0);
+        }
+
+        let questionCount = 0;
+        let scoreVar = 0;
+        const proximaBtn = document.querySelector('.proxima-btn');
+
+        function proximaquestao() {
+            if (questionCount < questions.length - 1) {
+                questionCount++;
+                verquestao(questionCount);
+                proximaBtn.classList.remove('ativo');
+            } else {
+                alert('Você completou o quiz!');
+                armazenarScore();
+            }
+        }
+
+        const listaopcoes = document.querySelector('.opcoes-lista');
+        function verquestao(index) {
+            const textquestoes = document.querySelector('.texto-questao');
+            textquestoes.textContent = `${questions[index].numb}. ${questions[index].question}`;
+
+            let optionTag = `<div class="opcoes"><div class="opcao"><span>${questions[index].option[0]}</span></div></div>
+            <div class="opcoes"><div class="opcao"><span>${questions[index].option[1]}</span></div></div>
+            <div class="opcoes"><div class="opcao"><span>${questions[index].option[2]}</span></div></div>
+            <div class="opcoes"><div class="opcao"><span>${questions[index].option[3]}</span></div></div>`;
+            listaopcoes.innerHTML = optionTag;
+            questionContador(index + 1);
+
+            const opcoes = document.querySelectorAll('.opcao');
+            for (let i = 0; i < opcoes.length; i++) {
+                opcoes[i].setAttribute('onclick', 'opcaoSelecionada(this)');
+            }
+        }
+
+        function opcaoSelecionada(resposta) {
+            const opcoesLista = document.querySelector('.opcoes-lista');
+            const opcao = resposta.parentNode;
+            let respostaUsuario = resposta.textContent;
+            let respostaCorreta = questions[questionCount].resposta;
+            let todaOpcoes = opcoesLista.children.length;
+
+            if (respostaUsuario == respostaCorreta) {
+                opcao.classList.add('correta');
+                scoreVar += 1;
+                console.log(scoreVar);
+            } else {
+                opcao.classList.add('incorreta');
+                for (let selecionarAcerta = 0; selecionarAcerta < todaOpcoes; selecionarAcerta++) {
+                    if (opcoesLista.children[selecionarAcerta].textContent == respostaCorreta) {
+                        opcoesLista.children[selecionarAcerta].setAttribute('class', 'opcoes correta');
+                    }
+                }
+            }
+
+            for (let multiplaescolha = 0; multiplaescolha < todaOpcoes; multiplaescolha++) {
+                opcoesLista.children[multiplaescolha].classList.add('disabled');
+            }
+            proximaBtn.classList.add('ativo');
+        }
+
+        function questionContador(index) {
+            const questionTotal = document.querySelector('.questao-atual');
+            questionTotal.textContent = `${index} de ${questions.length} Questões`;
+        }
+
+        function armazenarScore() {
+            fetch("/scores/armazenar", {
+                method: "POST",
+               headers: {
+            "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    scoreServer: scoreVar,
+                }),
+            })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+                if (resposta.ok) {
+                    resposta.json().then(json => {
+                        console.log("Score armazenado com sucesso");
+                    });
+                } else {
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                        alert("Houve um erro ao tentar armazenar o score!");
+                    });
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                alert("Houve um erro ao tentar armazenar o score!");
+            });
+        }
+    </script>
 </body>
 </html>
-
-<script>
-     function AparecerModal() {
-       
-            const modal = document.querySelector('.modal1');
-            modal.classList.add('active');
-        }
-    function TirarModal()
-    {
-        const modal = document.querySelector('.modal1');
-        modal.classList.remove('active')
-        }
-    
-</script>
