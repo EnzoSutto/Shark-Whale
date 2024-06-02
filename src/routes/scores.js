@@ -3,7 +3,6 @@ var router = express.Router();
 
 var scoresController = require("../controllers/scoresController");
 
-router.post("/cadastrarRespostas", function (req, res){
-    scoresController.cadastrarRespostas(req, res);
-});
+router.post("/armazenar", scoresController.cadastrarScore);
+
 module.exports = router;
